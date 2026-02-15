@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonia & Me: The Journey ❤️</title>
+    <style>
+        /* CORE COLORS */
+        :root { --primary-color: #ff4d6d; --bg-color: #fff0f3; --glass-bg: rgba(255, 255, 255, 0.95); }
+
+        /* LAYOUT */
+        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--bg-color); font-family: 'Quicksand', sans-serif; overflow: hidden; }
+        .card { background: var(--glass-bg); padding: 2.5rem; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2); text-align: center; width: 90%; max-width: 450px; z-index: 10; border: 3px solid white; }
+
+        /* ANIMATIONS & TEXT */
+        .cat-face { font-size: 75px; margin-bottom: 0.5rem; display: block; transition: transform 0.3s; }
+        .step { display: none; }
+        .step.active { display: block; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        h1 { color: var(--primary-color); font-size: 1.6rem; margin-bottom: 10px; }
+        p { font-size: 1.1rem; color: #444; margin-bottom: 25px; line-height: 1.4; }
+
+        /* BUTTONS - ALL UNIFORM NOW */
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        button { padding: 16px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; background: var(--primary-color); color: white; font-size: 1rem; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.2); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 77, 109, 0.3); }
+        /* The .fail-btn style has been removed so all buttons look the same */
+
+        /* BACKGROUND HEARTS */
+        .floating-heart { position: absolute; color: var(--primary-color); opacity: 0.2; animation: floatUp 4s linear infinite; pointer-events: none; }
+        @keyframes floatUp { 0% { transform: translateY(100vh); } 100% { transform: translateY(-10vh); } }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="cat" class="cat-face">🎮</div>
+
+        <div class="step active" id="intro">
+            <h1>Hi Antonia. ❤️</h1>
+            <p>I built this simulator to give you the best sentimental gift I can think of, a chance to go through summer 2023 in a quiz/choose your adventure style. Choose the correct options in order to win the game. <br><br><b>You ready?</b></p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl1', '🍿')">Start the Game</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl1">
+            <h1>Level 1: The First Date</h1>
+            <p>We're at the cinema for our first little date. What are we watching?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl2', '🌳')">Spider-Man: Across the Spider-Verse</button>
+                <button class="fail-btn" onclick="gameOver('You get bored of the movie and leave early. You and Asher never go on another date.')">Oppenheimer</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl2">
+            <h1>Level 2: The Second Date</h1>
+            <p>Things went super well! Where did we decide to go next?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl3', '🛍️')">Mall and thrifting</button>
+                <button class="fail-btn" onclick="gameOver('In this universe, you lock the keys in Asher trunk and his trunk does not magically open. We probably will not go on another date for a while.')">beach</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl3">
+            <h1>Level 3: After the Mall</h1>
+            <p>Thrifting was a success. We aren't ready to go home yet. Where to?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl4', '🏖️')">Crystal Lake</button>
+                <button class="fail-btn" onclick="gameOver('We never had that first cute kiss on the cheek moment. Try again.')">Back Home</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl4">
+            <h1>Level 4: The Shore</h1>
+            <p>We want to walk on the beach. Where do we drive to?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl5', '🌅')">Wildwood</button>
+                <button class="fail-btn" onclick="gameOver('Wrong beach, ocean city lowkey boring ash!')">Ocean City</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl5">
+            <h1>Level 5: The Cape</h1>
+            <p>It's getting late, and the views are beautiful. Where are we?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl6', '🎇')">Sunset Beach and Cape May</button>
+                <button class="fail-btn" onclick="gameOver('We get robbed in AC!')">Atlantic City</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl6">
+            <h1>Level 6: Fireworks</h1>
+            <p>It’s the 4th of July. I’m nervous, but I have a big question for you...</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl7', '✈️')">Asking you to be my girlfriend</button>
+                <button class="fail-btn" onclick="gameOver('I was hungry!')">Asking for a burger</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl7">
+            <h1>Level 7: The Big Change</h1>
+            <p>Things got real. I moved to Florida, and we had to navigate the distance. ✈️</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl8', '🍳')">Keep the love going</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl8">
+            <h1>Level 8: The Reunion</h1>
+            <p>We’re finally back and chilling at 2306 Finch. What’s our morning tradition?</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('lvl9', '🎓')">Making breakfast together</button>
+                <button class="fail-btn" onclick="gameOver('Finch breakfast was legendary why would we do that! Try again.')">Ordering takeout</button>
+            </div>
+        </div>
+
+        <div class="step" id="lvl9">
+            <h1>Level 9: College Bound</h1>
+            <p>That was the end of the best summer of our lives. I left for college, but it was just the start of us. ❤️</p>
+            <div class="btn-group">
+                <button onclick="nextLvl('winner', '🥺')">Continue our story</button>
+                <button class="fail-btn" onclick="gameOver('Damn.')">Say goodbye and ghost each other</button>
+            </div>
+        </div>
+
+        <div class="step" id="winner">
+            <h1>YOU WIN! 🏆</h1>
+            <p style="text-align: left; font-style: italic; font-size: 0.95rem; line-height: 1.5;">
+                "Antonia, the last couple of months apart broke me. But being back and working on us is the greatest joy I've ever felt. I love you more than this game can show. <br><br>Will you be my Valentine?"
+            </p>
+            <div class="btn-group">
+                <button onclick="celebrateFinal()">YES! ❤️</button>
+                <button id="noBtn" onmouseover="moveNo()" style="background: white; color: var(--primary-color); border: 1px solid var(--primary-color); box-shadow: none;">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextLvl(nextId, emoji) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById(nextId).classList.add('active');
+            document.getElementById('cat').innerText = emoji;
+        }
+
+        function gameOver(msg) {
+            document.getElementById('cat').innerText = '👻';
+            alert("GAME OVER\n" + msg);
+            location.reload();
+        }
+
+        const noBtn = document.getElementById('noBtn');
+        function moveNo() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            document.getElementById('cat').innerText = '🙀';
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 300);
+
+        function celebrateFinal() {
+            document.body.style.backgroundColor = "#ffccd5";
+            document.getElementById('cat').innerText = '😸';
+            document.getElementById('winner').innerHTML = "<h1>Happy Valentine's Day, Antonia! ❤️</h1><p>I'm so glad we're in this together and giving it another shot. I know we can do this.</p>";
+            for(let i=0; i<100; i++) setTimeout(createHeart, i * 30);
+        }
+    </script>
+</body>
+</html>
